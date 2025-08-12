@@ -2,16 +2,16 @@
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/access/Ownable2Step.sol";
 
-contract Africoin is ERC20, Ownable {
+contract Africoin is ERC20, Ownable2Step {
     mapping(address => bool) private _admins;
 
     event AdminAdded(address indexed admin);
     event AdminRemoved(address indexed admin);
 
-    constructor(uint256 initialSupply) Ownable(msg.sender) ERC20("Africoin", "AFC") {
-        _mint(msg.sender, initialSupply);
+    constructor(address owner) ERC20("Africoin", "AFC") Ownable(owner) {
+    
     }
 
     modifier onlyAdmin() {
@@ -21,6 +21,7 @@ contract Africoin is ERC20, Ownable {
 
     function addAdmin(address admin) public onlyOwner {
         require(admin != address(0), "Africoin: admin is the zero address");
+        require(admin != owner(), "Africoin: owner cannot be admin");
         require(!_admins[admin], "Africoin: already an admin");
         _admins[admin] = true;
         emit AdminAdded(admin);

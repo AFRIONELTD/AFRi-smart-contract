@@ -10,8 +10,9 @@ contract DeployAfricoin is Script {
     function run() public {
         uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
         uint256 initialSupply = vm.envUint("INITIAL_SUPPLY");
+        address owner = vm.envAddress("OWNER_ADDRESS");
         vm.startBroadcast(deployerPrivateKey);
-        Africoin africoin = new Africoin(initialSupply);
+        Africoin africoin = new Africoin( owner);
         vm.stopBroadcast();
     }
 } 
