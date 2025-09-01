@@ -27,12 +27,16 @@ if (!contractAddress) {
 const wallet = new ethers.Wallet(privateKey, provider);
 const africoin = new ethers.Contract(contractAddress, AFRICOIN_ABI, wallet);
 
-async function mint(to, amount) {
-  return africoin.mint(to, amount);
+async function mint(privateKey, to, amount) {
+  const wallet = new ethers.Wallet(privateKey, provider);
+  const africoinWithSigner = new ethers.Contract(contractAddress, AFRICOIN_ABI, wallet);
+  return africoinWithSigner.mint(to, amount);
 }
 
-async function addAdmin(admin) {
-  return africoin.addAdmin(admin);
+async function addAdmin(privateKey, admin) {
+  const wallet = new ethers.Wallet(privateKey, provider);
+  const africoinWithSigner = new ethers.Contract(contractAddress, AFRICOIN_ABI, wallet);
+  return africoinWithSigner.addAdmin(admin);
 }
 
 async function removeAdmin(admin) {

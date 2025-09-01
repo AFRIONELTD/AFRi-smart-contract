@@ -6,3 +6,6 @@ AFRICOIN CONTRACT _TRON  = https://shasta.tronscan.org/#/contract/TSXL4QQqQRCUsZ
 TRON(SHASTA)=TSXL4QQqQRCUsZgCRFF4Vw4Hj4cTNndMXy
 ETH(SEPOLIA)=0x10111032B1Cd4151AEFA0b41627e4F693f5183FF
 
+
+- name orivate key well
+- when we are calloing the mint function we are passing the  the privateKey stoed in the env.. we shiuld be passing the pk of the admin

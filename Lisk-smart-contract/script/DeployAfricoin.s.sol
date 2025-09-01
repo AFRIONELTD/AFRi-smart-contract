@@ -1,0 +1,17 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+import "forge-std/Script.sol";
+import { Africoin } from "../src/Africoin.sol";
+
+contract DeployAfricoin is Script {
+    function setUp() public {}
+
+    function run() public {
+        uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
+        address owner = vm.envAddress("OWNER_ADDRESS");
+        vm.startBroadcast(deployerPrivateKey);
+        Africoin africoin = new Africoin(owner);
+        vm.stopBroadcast();
+    }
+} 

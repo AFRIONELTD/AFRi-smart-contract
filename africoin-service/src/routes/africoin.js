@@ -12,19 +12,19 @@ router.use(authenticateToken);
 
 // Mint tokens (ETH or TRX)
 router.post('/mint', async (req, res) => {
-  const { type, to, amount } = req.body || {};
-  if (!type || !to || !amount) {
-    return sendResponse(res, { success: false, message: 'type, to, and amount are required.', data: null, status: 400 });
+  const { type, privateKey, to, amount } = req.body || {};
+  if (!type || !privateKey || !to || !amount) {
+    return sendResponse(res, { success: false, message: 'type, privateKey, to, and amount are required.', data: null, status: 400 });
   }
   try {
     let txHash;
     if (type === 'ETH') {
       if (!to.startsWith('0x')) throw new Error('ETH mint requires a 0x... address');
-      const tx = await africoinService.mint(to, amount);
+      const tx = await africoinService.mint(privateKey, to, amount);
       txHash = tx.hash;
     } else if (type === 'TRX') {
       if (!to.startsWith('T')) throw new Error('TRX mint requires a T... address');
-      const tx = await TronAfricoinService.mint(to, amount);
+      const tx = await TronAfricoinService.mint(privateKey, to, amount);
       txHash = tx;
     } else {
       return sendResponse(res, { success: false, message: 'Invalid type. Use ETH or TRX.', data: null, status: 400 });
@@ -34,20 +34,20 @@ router.post('/mint', async (req, res) => {
     sendResponse(res, { success: false, message: err.message, data: null, status: 500 });
   }
 });
-
+//
 // Add admin (ETH or TRX)
 router.post('/add-admin', async (req, res) => {
-  const { blockchain, admin } = req.body || {};
-  if (!blockchain || !admin) {
-    return sendResponse(res, { success: false, message: 'blockchain and admin are required.', data: null, status: 400 });
+  const { blockchain, privateKey, admin } = req.body || {};
+  if (!blockchain || !privateKey || !admin) {
+    return sendResponse(res, { success: false, message: 'blockchain, privateKey, and admin are required.', data: null, status: 400 });
   }
   try {
     let txHash;
     if (blockchain === 'ETH') {
-      const tx = await africoinService.addAdmin(admin);
+      const tx = await africoinService.addAdmin(privateKey, admin);
       txHash = tx.hash;
     } else if (blockchain === 'TRX') {
-      const tx = await TronAfricoinService.addAdmin(admin);
+      const tx = await TronAfricoinService.addAdmin(privateKey, admin);
       txHash = tx;
     } else {
       return sendResponse(res, { success: false, message: 'Invalid blockchain. Use ETH or TRX.', data: null, status: 400 });

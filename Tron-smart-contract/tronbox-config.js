@@ -14,8 +14,8 @@ module.exports = {
        *
        *   source .env && tronbox migrate --network mainnet
        */
-      userFeePercentage: 100,
-      feeLimit: 1000 * 1e6,
+      userFeePercentage: 0, // Deployer pays 100% of energy cost
+      feeLimit: 1000 * 1e6, // 1,000 TRX in sun (more reasonable)
       fullHost: 'https://api.trongrid.io',
       network_id: '1'
     },
@@ -51,10 +51,10 @@ module.exports = {
       // An object with the same schema as the settings entry in the Input JSON.
       // See https://docs.soliditylang.org/en/latest/using-the-compiler.html#input-description
       settings: {
-        // optimizer: {
-        //   enabled: true,
-        //   runs: 200
-        // },
+        optimizer: {
+          enabled: true,
+          runs: 200
+        },
         // evmVersion: 'istanbul',
         // viaIR: true,
       }

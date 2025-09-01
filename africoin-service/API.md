@@ -41,10 +41,13 @@ Mint Africoin tokens on ETH or TRX.
 ```json
 {
   "type": "ETH" | "TRX",
+  "privateKey": "<signer private key>",
   "to": "<recipient address>",
   "amount": "<amount>"
 }
 ```
+
+- For TRX, the private key should not include a leading `0x`.
 
 **Response:**
 ```json
@@ -67,9 +70,12 @@ Add an admin to the Africoin contract.
 ```json
 {
   "blockchain": "ETH" | "TRX",
+  "privateKey": "<signer private key>",
   "admin": "<admin address>"
 }
 ```
+
+- For TRX, the private key should not include a leading `0x`.
 
 **Response:**
 ```json

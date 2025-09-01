@@ -33,22 +33,23 @@ const tronWeb = new TronWeb({
   privateKey
 });
 
-async function addAdmin(adminAddress) {
+async function addAdmin(privateKey, adminAddress) {
   try {
-   
-    const contract = await tronWeb.contract(africoinAbi, contractAddress);
-  
+    const tronNode = process.env.TRON_RPC_URL || config.blockchain.tronRpcUrl;
+    const tw = new TronWeb({ fullHost: tronNode, privateKey });
+    const contract = await tw.contract(africoinAbi, contractAddress);
     const tx = await contract.addAdmin(adminAddress).send();
-
     return tx;
   } catch (err) {
     throw new Error('Tron addAdmin failed: ' + err.message);
   }
 }
 
-async function mint(to, amount) {
+async function mint(privateKey, to, amount) {
   try {
-    const contract = await tronWeb.contract(africoinAbi, contractAddress);
+    const tronNode = process.env.TRON_RPC_URL || config.blockchain.tronRpcUrl;
+    const tw = new TronWeb({ fullHost: tronNode, privateKey });
+    const contract = await tw.contract(africoinAbi, contractAddress);
     const tx = await contract.mint(to, amount).send();
     return tx;
   } catch (err) {
