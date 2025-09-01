@@ -1,0 +1,13 @@
+# Global ignores for the repo
+
+# Zencoder metadata
+.zencoder/
+
+# Environment files (any depth)
+.env
+.env.*
+**/.env
+**/.env.*
+
+# OS / editor cruft
+.DS_Store
