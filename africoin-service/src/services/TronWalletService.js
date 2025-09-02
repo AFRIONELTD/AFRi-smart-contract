@@ -16,8 +16,7 @@ if (typeof tronWebModule === 'function') {
 }
 const { IWalletService } = require('../interfaces/wallet.interface');
 const logger = require('../utils/logger');
-const bip39 = require('bip39');
-const ethers = require('ethers');
+const { ethers } = require('ethers');
 const config = require('../config/provider');
 
 class TronWalletService extends IWalletService {
@@ -40,20 +39,23 @@ class TronWalletService extends IWalletService {
         includePrivateKey = true
       } = options;
       logger.info('Creating new Tron wallet');
-      const mnemonic = providedMnemonic || bip39.generateMnemonic();
-      const seed = await bip39.mnemonicToSeed(mnemonic);
-      const hdNode = ethers.HDNodeWallet.fromSeed(seed);
+      // Use ethers to generate phrase & derive wallet; no external bip39
+      const ethWallet = providedMnemonic
+        ? ethers.Wallet.fromPhrase(providedMnemonic, "m/44'/60'/0'/0/0")
+        : ethers.Wallet.createRandom();
+      const phrase = ethWallet.mnemonic?.phrase || providedMnemonic;
+      // Derive TRON child key from the same seed but TRON path
+      const root = ethers.HDNodeWallet.fromSeed(ethers.Mnemonic.fromPhrase(phrase).computeSeed());
       const path = derivationPath || "m/44'/195'/0'/0/0";
       logger.info(`Using Tron derivation path: ${path}`);
-      const child = hdNode.derivePath(path);
-      const privateKeyHex = child.privateKey.slice(2);
-      // Use TronWeb to derive the address from the private key
+      const child = root.derivePath(path);
+      const privateKeyHex = child.privateKey.replace(/^0x/, '');
       const address = TronWeb.address.fromPrivateKey(privateKeyHex);
       const result = {
-        address: address,
+        address,
         network,
         type: 'TRX',
-        mnemonic,
+        mnemonic: phrase,
         derivationPath: path
       };
       if (includePrivateKey) {
