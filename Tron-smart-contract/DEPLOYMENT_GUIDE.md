@@ -12,7 +12,7 @@ Based on Tron's Contract Energy Sharing Mechanism, we've configured the deployme
 
 ### Option 1: TronBox Migration (Recommended)
 ```bash
-cd "/Users/macbook/Desktop/Afrione /AFRICOIN/africoin-smart-contract/Tron-smart-contract"
+cd "/Users/macbook/Desktop/Afrione /AFRi/AFRi-smart-contract/Tron-smart-contract"
 
 # Set environment variables
 export PRIVATE_KEY_MAINNET=YOUR_TRON_PRIVATE_KEY_HEX
@@ -25,7 +25,7 @@ tronbox migrate --network mainnet
 
 ### Option 2: Direct TronWeb Deployment
 ```bash
-cd "/Users/macbook/Desktop/Afrione /AFRICOIN/africoin-smart-contract/Tron-smart-contract"
+cd "/Users/macbook/Desktop/Afrione /AFRi/AFRi-smart-contract/Tron-smart-contract"
 
 # Install dependencies
 npm install
@@ -66,7 +66,7 @@ After deployment, verify on TronScan:
 1. Go to https://tronscan.org
 2. Search for your contract address
 3. Click "Verify Contract"
-4. Upload `contracts/AfriCoin.sol`
+4. Upload `contracts/AFRi.sol`
 5. Set compiler version: 0.8.6
 6. Enable optimization: Yes (runs: 200)
 7. Constructor argument: `TGRjPm9CSq4kC2zzqPdaqBXHdrRQ2iT1Fw`

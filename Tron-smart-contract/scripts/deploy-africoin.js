@@ -16,7 +16,7 @@ const TronWeb = require('tronweb');
 
   const tronWeb = new TronWeb({ fullHost, privateKey });
 
-  const artifactPath = path.join(__dirname, '..', 'build', 'contracts', 'AfriCoin.json');
+  const artifactPath = path.join(__dirname, '..', 'build', 'contracts', 'AFRi.json');
   const artifact = JSON.parse(fs.readFileSync(artifactPath, 'utf8'));
   const { abi, bytecode } = artifact;
 
@@ -39,7 +39,7 @@ const TronWeb = require('tronweb');
     parameters: [ownerAddress]
   });
 
-  console.log('AfriCoin deployed at:', contract.address);
+  console.log('AFRi deployed at:', contract.address);
 })().catch((err) => {
   console.error('Deployment failed:', err);
   process.exit(1);

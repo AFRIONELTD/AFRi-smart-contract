@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "deploy:tronweb": "node scripts/deploy-africoin.js"
+    "deploy:tronweb": "node scripts/deploy-AFRi.js"
   },
   "dependencies": {
     "dotenv": "^17.2.0",

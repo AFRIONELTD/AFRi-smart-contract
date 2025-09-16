@@ -3,7 +3,7 @@
     {
       "hash": "0x36b14a67e4a019dd59e8fa4134911e385feb6a9b5765609aa3b5cd26c5aa9781",
       "transactionType": "CREATE",
-      "contractName": "Africoin",
+      "contractName": "AFRi",
       "contractAddress": "0xd83cd7f63f31317b67b42a82b7e59efddeb5d345",
       "function": null,
       "arguments": [

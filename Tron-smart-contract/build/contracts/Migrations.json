@@ -46,9 +46,9 @@
   "sourceMap": "57:358:0:-:0;;;83:33;;;-1:-1:-1;;;;;;83:33:0;106:10;83:33;;;57:358;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "57:358:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;122:36;;;;;;;;;973:25:1;;;961:2;946:18;122:36:0;;;;;;;;83:33;;;;;-1:-1:-1;;;;;83:33:0;;;;;;-1:-1:-1;;;;;363:32:1;;;345:51;;333:2;318:18;83:33:0;300:102:1;304:109:0;;;;;;:::i;:::-;;:::i;:::-;;;219:5;;-1:-1:-1;;;;;219:5:0;205:10;:19;197:83;;;;-1:-1:-1;;;197:83:0;;609:2:1;197:83:0;;;591:21:1;648:2;628:18;;;621:30;687:34;667:18;;;660:62;-1:-1:-1;;;738:18:1;;;731:49;797:19;;197:83:0;;;;;;;;370:24:::1;:36:::0;304:109::o;14:180:1:-;73:6;126:2;114:9;105:7;101:23;97:32;94:2;;;142:1;139;132:12;94:2;-1:-1:-1;165:23:1;;84:110;-1:-1:-1;84:110:1:o",
   "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.6;\n\ncontract Migrations {\n    address public owner = msg.sender;\n    uint public last_completed_migration;\n\n    modifier restricted() {\n        require(msg.sender == owner, \"This function is restricted to the contract's owner\");\n        _;\n    }\n\n    function setCompleted(uint completed) public restricted {\n        last_completed_migration = completed;\n    }\n}",
-  "sourcePath": "/Users/macbook/Desktop/Afrione /AFRICOIN/africoin-smart-contract/Tron-smart-contract/contracts/Migrations.sol",
+  "sourcePath": "/Users/macbook/Desktop/Afrione /AFRi/AFRi-smart-contract/Tron-smart-contract/contracts/Migrations.sol",
   "ast": {
-    "absolutePath": "/Users/macbook/Desktop/Afrione /AFRICOIN/africoin-smart-contract/Tron-smart-contract/contracts/Migrations.sol",
+    "absolutePath": "/Users/macbook/Desktop/Afrione /AFRi/AFRi-smart-contract/Tron-smart-contract/contracts/Migrations.sol",
     "exportedSymbols": {
       "Migrations": [
         32
@@ -441,7 +441,7 @@
     "src": "32:383:0"
   },
   "legacyAST": {
-    "absolutePath": "/Users/macbook/Desktop/Afrione /AFRICOIN/africoin-smart-contract/Tron-smart-contract/contracts/Migrations.sol",
+    "absolutePath": "/Users/macbook/Desktop/Afrione /AFRi/AFRi-smart-contract/Tron-smart-contract/contracts/Migrations.sol",
     "exportedSymbols": {
       "Migrations": [
         32

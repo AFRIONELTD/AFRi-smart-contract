@@ -769,33 +769,33 @@ abstract contract ERC20 is Context, IERC20, IERC20Metadata, IERC20Errors {
     }
 }
 
-// src/Africoin.sol
+// src/AFRi.sol
 
-contract Africoin is ERC20, Ownable2Step {
+contract AFRi is ERC20, Ownable2Step {
     mapping(address => bool) private _admins;
 
     event AdminAdded(address indexed admin);
     event AdminRemoved(address indexed admin);
 
-    constructor( address owner) ERC20("Africoin", "AFC") Ownable(owner) {
+    constructor( address owner) ERC20("AFRi", "AFRi") Ownable(owner) {
         
     }
 
     modifier onlyAdmin() {
-        require(_admins[msg.sender], "Africoin: caller is not an admin");
+        require(_admins[msg.sender], "AFRi: caller is not an admin");
         _;
     }
 
     function addAdmin(address admin) public onlyOwner {
-        require(admin != address(0), "Africoin: admin is the zero address");
-        require(admin != owner(), "Africoin: owner cannot be admin");
-        require(!_admins[admin], "Africoin: already an admin");
+        require(admin != address(0), "AFRi: admin is the zero address");
+        require(admin != owner(), "AFRi: owner cannot be admin");
+        require(!_admins[admin], "AFRi: already an admin");
         _admins[admin] = true;
         emit AdminAdded(admin);
     }
 
     function removeAdmin(address admin) public onlyOwner {
-        require(_admins[admin], "Africoin: not an admin");
+        require(_admins[admin], "AFRi: not an admin");
         _admins[admin] = false;
         emit AdminRemoved(admin);
     }

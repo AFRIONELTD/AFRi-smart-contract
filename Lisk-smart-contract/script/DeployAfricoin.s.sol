@@ -2,16 +2,16 @@
 pragma solidity ^0.8.0;
 
 import "forge-std/Script.sol";
-import { Africoin } from "../src/Africoin.sol";
+import { AFRi } from "../src/AFRi.sol";
 
-contract DeployAfricoin is Script {
+contract DeployAFRi is Script {
     function setUp() public {}
 
     function run() public {
         uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
         address owner = vm.envAddress("OWNER_ADDRESS");
         vm.startBroadcast(deployerPrivateKey);
-        Africoin africoin = new Africoin(owner);
+        AFRi AFRi = new AFRi(owner);
         vm.stopBroadcast();
     }
 } 
